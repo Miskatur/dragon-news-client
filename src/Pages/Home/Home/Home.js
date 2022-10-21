@@ -5,6 +5,7 @@ import NewsSummaryCard from '../../Shared/NewsSummaryCard/NewsSummaryCard';
 
 const Home = () => {
     const news = useLoaderData();
+
     return (
         <div>
             <h5><small>This Home has {news.length}!</small></h5>

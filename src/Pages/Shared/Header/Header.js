@@ -22,11 +22,11 @@ const Header = () => {
     return (
         <Navbar className='mb-4' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand ><Link to={'/'} className='text-decoration-none fw-bolder text-dark'>Dragon News</Link> </Navbar.Brand>
+                <Navbar.Brand ><Link to={'/'} className='text-decoration-none fw-semibold text-dark d-flex align-items-center '>Dragon News</Link> </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">All News</Nav.Link>
+                        <Nav><Link to={'/'} className='text-decoration-none  text-dark d-flex align-items-center'>All News</Link></Nav>
                         <Nav.Link href="#pricing">Categories</Nav.Link>
                         <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
                             <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -55,7 +55,7 @@ const Header = () => {
                             }
 
                         </Nav>
-                        <Nav className='d-flex align-items-center'>
+                        <Link to={'/profile'} className='d-flex align-items-center'>
                             {
                                 user?.photoURL ?
                                     <Image
@@ -65,7 +65,7 @@ const Header = () => {
                                     </Image> :
                                     <FaUser></FaUser>
                             }
-                        </Nav>
+                        </Link>
                     </Nav>
 
                     <div className='d-lg-none'>
