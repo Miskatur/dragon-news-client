@@ -12,7 +12,7 @@ const LeftSideNav = () => {
 
 
     return (
-        <div className='text-lg-center'>
+        <div className=''>
             <p className='fw-semibold fs-5'>Total Categories : {categories.length}</p>
             <div>
                 {

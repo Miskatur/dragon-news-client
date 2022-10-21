@@ -1,14 +1,32 @@
-import React from 'react';
+import { GoogleAuthProvider } from 'firebase/auth';
+import React, { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import { FaFacebook, FaGithub, FaGoogle, FaReddit, FaTelegram, FaTwitter, FaWhatsapp } from 'react-icons/fa';
+import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
 import BrandCarousel from '../BrandCarousel/BrandCarousel';
 
 const RightSideNav = () => {
+
+    const { providerLogin } = useContext(AuthContext)
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user)
+            })
+            .catch(error => console.error(error))
+    }
+
+
+
+
     return (
         <div className='text-lg-center'>
             <ButtonGroup vertical>
-                <Button variant="outline-primary" className='px-5 mb-2 d-flex align-items-center justify-content-center' > <span className='px-2 d-flex align-items-center'><FaGoogle /> </span> Sign In With Google </Button>{' '}
+                <Button variant="outline-primary" className='px-5 mb-2 d-flex align-items-center justify-content-center' onClick={handleGoogleSignIn}> <span className='px-2 d-flex align-items-center'><FaGoogle /> </span> Sign In With Google </Button>{' '}
                 <Button variant="outline-dark" className='px-5 d-flex align-items-center justify-content-center'> <span className='px-2 d-flex align-items-center'><FaGithub /></span> Sign In With Github </Button>{' '}
             </ButtonGroup>
             <div>
@@ -25,7 +43,7 @@ const RightSideNav = () => {
 
                         <Button variant="outline-success" className='px-5 mb-2 d-flex align-items-center justify-content-evenly'><span className='px-2 d-flex align-items-center'><FaWhatsapp></FaWhatsapp></span> WhatsApp</Button>
 
-                        <Button variant="outline-dark" className='px-5 mb-2 d-flex align-items-center justify-content-evenly'><span className='px-2 d-flex align-items-center'><FaReddit></FaReddit></span> Reddit</Button>
+                        <Button variant="outline-dark" className=' px-5 mb-2 d-flex align-items-center justify-content-evenly'><span className='px-2 d-flex align-items-center'><FaReddit></FaReddit></span> Reddit</Button>
 
                     </ButtonGroup>
 
