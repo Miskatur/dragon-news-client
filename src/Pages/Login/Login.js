@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import useSetTitle from '../../Hooks/useSetTitle';
 
 
 
@@ -11,7 +12,7 @@ const Login = () => {
 
     const location = useLocation()
     const from = location.state?.from?.pathname || '/'
-
+    useSetTitle('Login')
 
     // navigation hook
     const navigate = useNavigate()
@@ -50,7 +51,7 @@ const Login = () => {
             .catch(error => {
                 const errorMessage = "Wrong Password. Input the valid Password. ";
                 setErrorMessage(errorMessage)
-                // console.error(error)
+                console.error(error)
             })
             .finally(() => {
                 setLoading(false)

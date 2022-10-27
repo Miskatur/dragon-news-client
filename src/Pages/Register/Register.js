@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { Spinner } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import useSetTitle from '../../Hooks/useSetTitle';
 
 
 const Register = () => {
-
+    useSetTitle('Register')
     // context API hook
-    const { createUser, updateUserData, loading, verifyEmail } = useContext(AuthContext)
+    const { createUser, updateUserData, loading, verifyEmail, setLoading } = useContext(AuthContext)
 
     // Show Password
     const [passwordShown, setPasswordShown] = useState(false);
@@ -55,6 +56,9 @@ const Register = () => {
                 const errorMessage = error.message;
                 setErrorMessage(errorMessage)
                 console.error(error)
+            })
+            .finally(() => {
+                setLoading(false)
             })
     }
 

@@ -2,9 +2,11 @@ import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { FaStar } from 'react-icons/fa';
 import { Link, useLoaderData } from 'react-router-dom';
+import useSetTitle from '../../../Hooks/useSetTitle';
 
 const News = () => {
     const news = useLoaderData()
+    useSetTitle('News Details')
     const { details, title, image_url, author, rating, category_id } = news
     const { name, published_date } = author
     const { number } = rating;
