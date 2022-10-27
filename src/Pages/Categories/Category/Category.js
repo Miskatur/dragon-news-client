@@ -8,7 +8,6 @@ const Category = () => {
     useSetTitle('Category')
     return (
         <div>
-            <h5><small>This category has {categoryNews.length} news.</small></h5>
             {
                 categoryNews.map(news => <NewsSummaryCard
                     key={news._id}

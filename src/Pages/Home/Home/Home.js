@@ -10,7 +10,6 @@ const Home = () => {
 
     return (
         <div>
-            <h5><small>This Home has {news.length}!</small></h5>
             <div>
                 {
                     news.map(news => <NewsSummaryCard
